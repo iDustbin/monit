@@ -2,7 +2,7 @@ monit
 =========
 ![monit](http://www.gogolek.co.uk/wp-content/uploads/2016/07/monit.png)
 
-Install Ansible Role for MySQL-Server 5.7 Community Edition
+Install Ansible Role for Monit
 
 # Build Status
 ![Build Status](https://travis-ci.org/iDustbin/monit.svg?branch=master "https://travis-ci.org/iDustbin/monit/") | [monit](https://travis-ci.org/iDustbin/monit/)
