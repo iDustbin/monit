@@ -1,0 +1,6 @@
+---
+
+codename: "stretch"
+service_call: "/usr/sbin/service "
+service_ntpd: "ntp"
+service_ssh: "ssh"
