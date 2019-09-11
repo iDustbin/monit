@@ -1,38 +1,34 @@
-Role Name
+monit
 =========
+![monit](http://www.gogolek.co.uk/wp-content/uploads/2016/07/monit.png)
 
-A brief description of the role goes here.
+Install Ansible Role for MySQL-Server 5.7 Community Edition
 
-Requirements
-------------
+# Build Status
+![Build Status](https://travis-ci.org/iDustbin/monit.svg?branch=master "https://travis-ci.org/iDustbin/monit/") | [monit](https://travis-ci.org/iDustbin/monit/)
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
-Role Variables
---------------
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+# Example playbook
+    - hosts: all
       roles:
-         - { role: username.rolename, x: 42 }
+        - monit
+      vars:
+		monit_http_listen: "localhost"
+		monit_http_port: "2812"
+		monit_admin_user: "admin"
+		monit_admin_pass: "password"
+		monit_check_interval: 120
 
-License
--------
+# Tested on
+- Debian - 6 - **Squeeze**
+- Debian - 7 - **Wheezy**
+- Debian - 8 - **Jessie** 
+- Debian - 9 - **Stretch** 
+- RHEL - 7.6 - **Maipo**
+- CentOS - **7.2**
+- CentOS - **7.6**
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+# Todo´s
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
