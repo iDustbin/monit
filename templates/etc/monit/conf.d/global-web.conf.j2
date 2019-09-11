@@ -1,0 +1,3 @@
+set httpd port {{ monit_http_port }} and
+  use address {{ monit_http_listen }}
+  allow {{ monit_admin_user }}:{{ monit_admin_pass }}

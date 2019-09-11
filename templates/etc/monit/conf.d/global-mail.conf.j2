@@ -1,0 +1,7 @@
+set mailserver localhost
+set mail-format { from: monit@{{ ansible_fqdn }} }
+set alert operations@xsite.de
+
+set eventqueue
+  basedir /var/lib/monit/events
+  slots 100

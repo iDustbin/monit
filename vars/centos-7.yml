@@ -1,0 +1,6 @@
+---
+
+codename: ""
+service_call: "/usr/sbin/service "
+service_ntpd: "ntpd"
+service_ssh: "sshd"

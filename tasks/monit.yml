@@ -1,0 +1,90 @@
+---
+
+- name: Install monit
+  package:
+    name: "{{ item }}"
+    state: "present"
+  with_items:
+    - "monit"
+  tags:
+    - monit
+
+- name: Check Config Folder
+  file:
+    path: "{{ item }}"
+    state: "directory"
+    mode: "0755"
+  with_items:
+    - "/etc/monit/conf.d"
+    - "/var/lib/monit/events"
+  tags:
+    - monit
+
+- name: set main config 4 CentOS
+  when: ansible_os_family == "RedHat"
+  template:
+    src: "etc/monit/{{ item }}.j2"
+    dest: "/etc/{{ item }}"
+    owner: "root"
+    group: "root"
+    mode: "0700"
+  with_items:
+    - monitrc
+  notify: "restart monit"
+  tags:
+    - monit
+
+# Debian set defaults
+- name: configure debian defaults
+  when: ansible_os_family == "Debian"
+  template:
+    src: "etc/default/{{ item }}.j2"
+    dest: "/etc/default/{{ item }}"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  with_items:
+    - monit
+  notify: "restart monit"
+  tags:
+    - monit
+
+- name: set main config 4 Debian
+  when: ansible_os_family == "Debian"
+  template:
+    src: "etc/monit/{{ item }}.j2"
+    dest: "/etc/monit/{{ item }}"
+    owner: "root"
+    group: "root"
+    mode: "0700"
+  with_items:
+    - monitrc
+  notify: "restart monit"
+  tags:
+    - monit
+
+- name: configure fragments
+  template:
+    src: "etc/monit/conf.d/{{ item }}.j2"
+    dest: "/etc/monit/conf.d/{{ item }}"
+    owner: "root"
+    group: "root"
+    mode: "0600"
+  with_items:
+    - global.conf
+    - global-web.conf
+    - global-mail.conf
+    - system.conf
+    - ssh.conf
+    - ntp.conf
+  notify: "restart monit"
+  tags:
+    - monit
+
+- name: Start service monit
+  service:
+    name:  "monit"
+    enabled: "yes"
+    state: "started"
+  tags:
+    - monit

@@ -1,0 +1,6 @@
+---
+
+codename: "squeeze"
+service_call: "/etc/init.d/"
+service_ntpd: "ntp"
+service_ssh: "sshd"

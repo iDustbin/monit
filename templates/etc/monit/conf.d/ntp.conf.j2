@@ -1,0 +1,5 @@
+
+ check process ntpd with pidfile /var/run/ntpd.pid
+   start program  "{{ service_call }}{{ service_ntpd }} start"
+   stop program  "{{ service_call }}{{ service_ntpd }} stop"
+   if failed host 127.0.0.1 port 123 type udp for 3 cycles then restart

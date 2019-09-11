@@ -1,0 +1,7 @@
+set daemon {{ monit_check_interval }}
+  with start delay {{ (monit_check_interval*2) }}
+
+set logfile /var/log/monit.log
+set pidfile /var/run/monit.pid
+set idfile /var/lib/monit/id
+set statefile /var/lib/monit/state

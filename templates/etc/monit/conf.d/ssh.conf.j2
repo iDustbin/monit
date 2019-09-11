@@ -1,0 +1,5 @@
+
+ check process sshd with pidfile /var/run/sshd.pid
+   start program  "{{ service_call }}{{ service_ssh }} start"
+   stop program  "{{ service_call }}{{ service_ssh }} stop"
+   if failed port 22 protocol ssh for 3 cycles then restart
